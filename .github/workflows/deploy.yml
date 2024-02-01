@@ -32,3 +32,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: ./
           target: /var/www/wordpress/
+
+
+
+
+
+
+
+
+
+
