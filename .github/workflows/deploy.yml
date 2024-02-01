@@ -1,9 +1,9 @@
- name: Deploy to Production
+name: Deploy to Production
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1' # Adjust version as needed
+          php-version: '8.1'
 
       - name: Install dependencies
         run: |
