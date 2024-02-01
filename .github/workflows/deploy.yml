@@ -18,6 +18,9 @@ jobs:
         with:
           php-version: '8.1'
 
+
+          
+
       - name: Deploy to server
         uses: appleboy/scp-action@master
         with:
