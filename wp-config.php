@@ -29,13 +29,15 @@ define( 'DB_USER', 'arpitgupta' );
 define( 'DB_PASSWORD', 'Arpit#@!123' );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'localhost:10004' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
+
+
 
 /**#@+
  * Authentication unique keys and salts.
