@@ -263,7 +263,7 @@ ls
 
   * Secret Name: SSH_PRIVATE_KEY Secret Value: Your private SSH key. This is a multiline value, so you'll need to paste the entire key, including line breaks.
 
-  * on server, We can copy the private key from here
+  * on server, We can copy the private key from here.
 
 ```bash
   cat ~/.ssh/github-actions
