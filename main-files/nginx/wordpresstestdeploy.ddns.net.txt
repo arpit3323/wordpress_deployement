@@ -1,0 +1,72 @@
+server {
+    server_name wordpresstestdeploy.ddns.net;
+
+    root /var/www/wordpress;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/wordpresstestdeploy.ddns.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/wordpresstestdeploy.ddns.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    gzip on;
+    gzip_types text/plain text/css applications/javascript images/*;
+
+
+    # Leverage Browser Caching
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        expires 1y;
+        add_header Cache-Control "public, max-age=31536000";
+    }
+        client_max_body_size 10M;
+        tcp_nodelay on;
+        tcp_nopush on;
+        keepalive_timeout 30;
+        client_body_timeout 10;
+        client_header_timeout 10;
+    send_timeout 10;
+
+    # Enable Keep-Alive Connections
+    keepalive_requests 100;
+# Prevent access to hidden files and directories
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+# Prevent access to wp-config.php
+    location ~* wp-config\.php {
+        deny all;
+    }
+
+# Protect against clickjacking attacks
+    add_header X-Frame-Options "SAMEORIGIN";
+
+    # Protect against MIME-type sniffing
+    add_header X-Content-Type-Options "nosniff";           
+}
+server {
+    if ($host = wordpresstestdeploy.ddns.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name wordpresstestdeploy.ddns.net;
+    return 404; # managed by Certbot
