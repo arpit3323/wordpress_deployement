@@ -75,9 +75,9 @@ best practices and ensure optimal performance of the website.
 
 ```bash
   sudo mysql -u root -p
-  CREATE DATABASE wordpress;
-  CREATE USER 'arpitgupta'@'localhost' IDENTIFIED BY 'Arpit#@!123';
-  GRANT ALL ON wordpress.* TO 'arpitgupta'@'localhost';
+  CREATE DATABASE database_name;
+  CREATE USER 'your username'@'localhost' IDENTIFIED BY 'Your Password';
+  GRANT ALL ON wordpress.* TO 'your username'@'localhost';
   FLUSH PRIVILEGES;
   EXIT;
 ```
@@ -331,6 +331,8 @@ Your certificates are downloaded, installed, and loaded. Try reloading your webs
 
 
 # Now we can see our wordpress website is live 
+
+
 ![Wordpress Website Screenshot](./Images/Wordpress%20Website.PNG)
 
 
