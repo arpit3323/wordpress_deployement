@@ -269,6 +269,64 @@ ls
   cat ~/.ssh/github-actions
 ```
 
+
+## To Secure Nginx with Let's Encrypt on Ubuntu
+
+Let’s Encrypt is a Certificate Authority (CA) that provides an easy way to obtain and install free TLS/SSL certificates, thereby enabling encrypted HTTPS on web servers. 
+
+* Step 1: Installing Certbot
+
+```bash
+sudo apt install certbot python3-certbot-nginx
+```
+
+  * Perform the below command 
+  
+```bash 
+  cd /etc/nginx/sites-available/
+  sudo cp wordpress.com wordpresstestdeploy.ddns.net
+  cd ../sites-enabled/
+  sudo rm -rf wordpress.com
+  sudo ln -s /etc/nginx/sites-available/wordpresstestdeploy.ddns.net /etc/nginx/sites-enabled/
+  ```
+
+* Step 2 Step: Confirming Nginx’s Configuration
+
+To check, open the configuration file for your domain using 
+
+```bash 
+sudo nano /etc/nginx/sites-available/example.com
+```
+
+Find the existing server_name line. It should look like this:
+
+```bash
+...
+server_name wordpresstestdeploy.ddns.net;
+...
+```
+
+save the file, quit your editor, and verify the syntax of your configuration edits:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+* Step 4 : Obtaining an SSL Certificate
+
+```bash
+sudo certbot --nginx -d wordpresstestdeploy.ddns.net
+```
+
+Your certificates are downloaded, installed, and loaded. Try reloading your website using https:// and notice your browser’s security indicator. It should indicate that the site is properly secured, usually with a lock icon. If you test your server using the SSL Labs Server Test, it will get an A grade.
+
+
+
+
+
+
+
 ## Used the  integrated Relic as a Monitoring tool. 
 
 
