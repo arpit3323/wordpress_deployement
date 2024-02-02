@@ -325,9 +325,13 @@ Your certificates are downloaded, installed, and loaded. Try reloading your webs
 
 
 
-
-
 ## Used the  integrated Relic as a Monitoring tool. 
+
+![Monitoring tool Screenshot](./Images/new%20relic.PNG)
+
+
+# Now we can see our wordpress website is live 
+![Wordpress Website Screenshot](./Images/Wordpress%20Website.PNG)
 
 
 
