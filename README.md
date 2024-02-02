@@ -82,7 +82,7 @@ best practices and ensure optimal performance of the website.
   EXIT;
 ```
 
-  ## Step 3: Nginx Configuration 
+  ## Step 3: Nginx Configuration.
 
     * Created the wordpress file under /etc/nginx/sites-available dir and added the config details
 
